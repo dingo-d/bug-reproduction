@@ -1,0 +1,28 @@
+{
+  "name": "dingo-d/patchwork-dispatch-dynamic-ereror",
+  "description": "Test",
+  "license": "MIT",
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "pestphp/pest": "^1.2"
+  },
+  "require-dev": {
+    "zenstruck/console-test": "^1.3",
+    "yoast/wp-test-utils": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MadeByDenis\\Patchwork\\Scenario\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MadeByDenis\\Patchwork\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}

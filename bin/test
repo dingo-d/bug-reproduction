@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use MadeByDenis\Patchwork\Scenario\Command\TestCommand;
+use Symfony\Component\Console\Application;
+
+if (!in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
+    echo 'Warning: The console should be invoked via the CLI version of PHP, not the ' . PHP_SAPI . ' SAPI' . PHP_EOL;
+}
+
+// Used when running the wp-pest command from composer.
+$vendorPath = dirname(__DIR__, 4) . '/vendor/autoload.php';
+
+// Used for local development.
+$localPath = dirname(__DIR__) . '/vendor/autoload.php';
+
+if (file_exists($vendorPath)) {
+    require_once $vendorPath;
+    $autoloadPath = $vendorPath;
+} else {
+    require_once $localPath;
+    $autoloadPath = $localPath;
+}
+
+$app = new Application();
+
+$app->add(new TestCommand());
+
+$app->run();
